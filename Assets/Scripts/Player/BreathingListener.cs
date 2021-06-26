@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -20,8 +21,11 @@ public class BreathingListener : MonoBehaviour
     }
     #endregion
 
-    //singleton variables
-    public float intensity=0;
+    //Variables that can be accesibly to everyone
+    [HideInInspector] public float Intensity=0;
+
+    [Header("SetUo")]
+    [SerializeField] int SecondsBreatheIn=4;
 
     [Header("Debug")]
     [SerializeField] TextMesh BreathingDebug;
@@ -30,35 +34,30 @@ public class BreathingListener : MonoBehaviour
     private Vector3 OriginalPosition = Vector3.zero;
     private Vector3 LastPosition = Vector3.zero;
 
-    private float LastDistance =0f;
-    private float MaxDistance =0f;
+    private float LastIntensity =0f;
+    private float MaxIntensity =0f;
+
+    private bool _HasGameStarted;
 
     private void AfterAwake()
     {
-
+        _HasGameStarted=false;
     }
 
     public void OnBreathingDetected(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if( _HasGameStarted && context.started)
         {
+            Debug.Log(Intensity);
+            
             //here i get the pos of the controller and i do a nullcheck
             Vector3 pos = context.ReadValue<Vector3>();
             if(pos==null){ return;}
 
             //check the distance from the breath in position to the breath out position (?)
-            float distance = Vector3.Distance(OriginalPosition, pos);
-            if(distance > MaxDistance)
-            {
-                MaxDistance =distance;
-            }
-
-            //show the remmaped value
-            intensity = distance;
-            BreathingDebug.text = $"Intensity: {ReMap(0,4)}";
-
+            Intensity= Vector3.Distance(OriginalPosition, pos);
             LastPosition = pos;
-            LastDistance = distance;
+
         }
        
         
@@ -66,13 +65,53 @@ public class BreathingListener : MonoBehaviour
 
     public void Testing(InputAction.CallbackContext context)
     {
-        OriginalPosition = LastPosition;
-        MaxDistance = 0f;
+        if(_HasGameStarted==false)
+        {
+            _HasGameStarted = true;
+            StartCoroutine(SetUp());
+        }
+
     }
 
 
     public float ReMap(float newMin, float newMax)
     {
-        return Mathf.Lerp (newMin, newMax, Mathf.InverseLerp (0,MaxDistance, intensity));
+        return Mathf.Lerp (newMin, newMax, Mathf.InverseLerp (0,MaxIntensity, Intensity));
+    }
+
+
+    IEnumerator SetUp() 
+    {
+        OriginalPosition = LastPosition;
+        MaxIntensity = 0;
+
+        float tempTime=0f;
+        while(tempTime < SecondsBreatheIn)
+        {
+            BreathingDebug.text = "Breathe in";
+            if(LastPosition.magnitude < OriginalPosition.magnitude)
+            {
+                OriginalPosition = LastPosition;
+            }
+
+            tempTime += 0.1f;
+            yield return new WaitForSeconds(.1f);
+        }
+
+        tempTime=0f;
+        
+        while(tempTime < SecondsBreatheIn)
+        {
+            BreathingDebug.text = "Breathe out";
+            if(Intensity > MaxIntensity)
+            {
+                MaxIntensity= Intensity;
+            }
+
+            tempTime += 0.1f;
+            yield return new WaitForSeconds(.1f);
+        }
+        
+        BreathingDebug.text="";
     }
 }
