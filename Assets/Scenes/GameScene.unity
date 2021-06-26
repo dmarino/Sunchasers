@@ -1168,7 +1168,19 @@ MonoBehaviour:
     m_ActionId: f3994402-e118-42b7-ae8e-bf7621d14895
     m_ActionName: Player/Look[/Mouse/delta,/Touchscreen/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1712428675}
+        m_TargetAssemblyTypeName: BreathingListener, Assembly-CSharp
+        m_MethodName: Testing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3ab5b5bc-1eee-4674-a9ec-1c89a7d58d78
     m_ActionName: Player/Fire[/Mouse/leftButton,/Touchscreen/primaryTouch/tap]
   - m_PersistentCalls:
@@ -1228,7 +1240,7 @@ MonoBehaviour:
     m_ActionId: 5da785aa-2fa3-43a8-aae2-9216f1892cef
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: XR
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1258,6 +1270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a399aaa2ef4f4814a9ba12bf143b6cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 4
+  cameraTransform: {fileID: 357894117}
   BreathingDebug: {fileID: 398754525}
 --- !u!1 &1926673381
 GameObject:

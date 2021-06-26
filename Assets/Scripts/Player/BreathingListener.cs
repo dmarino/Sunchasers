@@ -4,26 +4,50 @@ using UnityEngine.UI;
 
 public class BreathingListener : MonoBehaviour
 {
-
-    [Header("Debug")]
-    [SerializeField] float threshold = 0.02f;
+    [Header("Tunning")]
+    [SerializeField] int scale =4;
 
     [Header("Debug")]
     [SerializeField] TextMesh BreathingDebug;
-    Vector3 LastPos = Vector3.zero;
+
+    //for internal use
+    private Vector3 OriginalPosition = Vector3.zero;
+    private Vector3 LastPosition = Vector3.zero;
+
+    private float LastDistance =0f;
+    private float MaxDistance =0f;
+
+
     public void OnBreathingDetected(InputAction.CallbackContext context)
     {
         if(context.started)
         {
-            Vector3 forward = Camera.main.transform.TransformDirection(Vector3.forward);
+            //here i get the pos of the controller and i do a nullcheck
             Vector3 pos = context.ReadValue<Vector3>();
+            if(pos==null){ return;}
 
-            BreathingDebug.text = $"Breathing: /n x: {pos.x}  /n z: {pos.z}";
-            
-           
+            //check the distance from the breath in position to the breath out position (?)
+            float distance = Vector3.Distance(OriginalPosition, pos);
+            if(distance > MaxDistance)
+            {
+                MaxDistance =distance;
+            }
 
-            LastPos = pos;
+            //show the remmaped value
+            float remappedValue = Mathf.Lerp (0, scale, Mathf.InverseLerp (0,MaxDistance, distance));
+            BreathingDebug.text = $"Intensity: {remappedValue}";
+
+            LastPosition = pos;
+            LastDistance = distance;
         }
+       
         
     }
+
+    public void Testing(InputAction.CallbackContext context)
+    {
+        OriginalPosition = LastPosition;
+        MaxDistance = 0f;
+    }
+
 }
