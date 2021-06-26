@@ -4,8 +4,24 @@ using UnityEngine.UI;
 
 public class BreathingListener : MonoBehaviour
 {
-    [Header("Tunning")]
-    [SerializeField] int scale =4;
+    #region Singleton
+    public static BreathingListener Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            AfterAwake();
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    #endregion
+
+    //singleton variables
+    public float intensity=0;
 
     [Header("Debug")]
     [SerializeField] TextMesh BreathingDebug;
@@ -17,6 +33,10 @@ public class BreathingListener : MonoBehaviour
     private float LastDistance =0f;
     private float MaxDistance =0f;
 
+    private void AfterAwake()
+    {
+
+    }
 
     public void OnBreathingDetected(InputAction.CallbackContext context)
     {
@@ -34,8 +54,8 @@ public class BreathingListener : MonoBehaviour
             }
 
             //show the remmaped value
-            float remappedValue = Mathf.Lerp (0, scale, Mathf.InverseLerp (0,MaxDistance, distance));
-            BreathingDebug.text = $"Intensity: {remappedValue}";
+            intensity = distance;
+            BreathingDebug.text = $"Intensity: {ReMap(0,4)}";
 
             LastPosition = pos;
             LastDistance = distance;
@@ -50,4 +70,9 @@ public class BreathingListener : MonoBehaviour
         MaxDistance = 0f;
     }
 
+
+    public float ReMap(float newMin, float newMax)
+    {
+        return Mathf.Lerp (newMin, newMax, Mathf.InverseLerp (0,MaxDistance, intensity));
+    }
 }
