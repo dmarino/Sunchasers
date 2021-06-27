@@ -189,7 +189,7 @@ SpriteRenderer:
   m_Size: {x: 18.5, y: 10.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &342641763
@@ -847,7 +847,6 @@ GameObject:
   - component: {fileID: 1034897472}
   - component: {fileID: 1034897476}
   - component: {fileID: 1034897474}
-  - component: {fileID: 1034897477}
   m_Layer: 0
   m_Name: VRRig
   m_TagString: Untagged
@@ -964,26 +963,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1034897477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034897471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9252d638ad36b6b4492bd3b6fb282670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderScale: 1
-  reflectionLayer:
-    serializedVersion: 2
-    m_Bits: 4294967279
-  reflectSkybox: 1
-  reflectionTarget: {fileID: 137534197664757188}
-  reflectionPlaneOffset: 0
-  hideReflectionCamera: 1
 --- !u!1 &1210008593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,17 +1570,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.2861797, b: 0.50980073, a: 1}
-  colorDepth: 0.8
-  horizonColor: {r: 0, g: 0.22735623, b: 0.8, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28617403, b: 0.50980073, a: 1}
+  colorDepth: 0.5
+  horizonColor: {r: 0, g: 0.22735056, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.301866, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30186033, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.74
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20383173, g: 0.3097091, b: 0.517647, a: 0}
+  underwaterColor: {r: 0.15165508, g: 0.29150915, b: 0.5660378, a: 0}
   underwaterColorStrength: 0
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
