@@ -24,8 +24,8 @@ public class QuestionnaireController : MonoBehaviour
     private Question _currentQuestion;
 
     private Dictionary<Type, Question> _questions;
-    [SerializeField] QuestionnaireInfo _BeginningInfo;
-    [SerializeField] QuestionnaireInfo _LastInfo;
+    [SerializeField] public QuestionnaireInfo _BeginningInfo;
+    [SerializeField] public QuestionnaireInfo _LastInfo;
     private QuestionnaireInfo _CurrentInfo;
 
     private bool _QuestionnaireHasStarted=false;

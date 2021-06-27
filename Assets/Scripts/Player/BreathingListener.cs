@@ -23,6 +23,7 @@ public class BreathingListener : MonoBehaviour
 
     //Variables that can be accesibly to everyone
     [HideInInspector] public float Intensity=0;
+    public int _AmountOfBreatOuts;
 
     [Header("SetUo")]
     [SerializeField] int SecondsBreatheIn=4;
@@ -38,7 +39,7 @@ public class BreathingListener : MonoBehaviour
     private float MaxIntensity =0f;
     private bool _HasGameStarted;
 
-    private int _AmountOfBreatOuts;
+
 
     private void AfterAwake()
     {
@@ -72,6 +73,12 @@ public class BreathingListener : MonoBehaviour
             Intensity= Vector3.Distance(OriginalPosition, pos);
             LastPosition = pos;
 
+            if(Intensity >= MaxIntensity)
+            {
+                _AmountOfBreatOuts ++;
+            }
+
+
         }
        
     }
@@ -95,7 +102,6 @@ public class BreathingListener : MonoBehaviour
 
     IEnumerator SetUp() 
     {
-        OriginalPosition = LastPosition;
         MaxIntensity = 0;
 
         float tempTime=0f;
@@ -126,5 +132,7 @@ public class BreathingListener : MonoBehaviour
         }
         
         BreathingDebug.text="";
+
+        QuestionnaireController.Instance.ShowScreen<GameQuestion>();
     }
 }

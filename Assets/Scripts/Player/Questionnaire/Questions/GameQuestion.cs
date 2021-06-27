@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndQuestion : MonoBehaviour, Question
+public class GameQuestion : MonoBehaviour, Question
 {
     public GameObject GO => gameObject;
 
@@ -10,4 +10,5 @@ public class EndQuestion : MonoBehaviour, Question
     {
         gameObject.SetActive(false);
     }
+
 }
