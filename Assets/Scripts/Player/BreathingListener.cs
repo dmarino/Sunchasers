@@ -27,6 +27,9 @@ public class BreathingListener : MonoBehaviour
 
     [Header("SetUo")]
     [SerializeField] int SecondsBreatheIn=4;
+    [SerializeField] GameObject LotusPrefab;
+
+    [SerializeField] Transform LotusSpawnPoint;
 
     [Header("Debug")]
     [SerializeField] TextMesh BreathingDebug;
@@ -38,6 +41,7 @@ public class BreathingListener : MonoBehaviour
     private float LastIntensity =0f;
     private float MaxIntensity =0f;
     private bool _HasGameStarted;
+
 
 
 
@@ -76,6 +80,8 @@ public class BreathingListener : MonoBehaviour
             if(Intensity >= MaxIntensity)
             {
                 _AmountOfBreatOuts ++;
+                Instantiate(LotusPrefab, LotusSpawnPoint.position, Random.rotation);
+
             }
 
 
