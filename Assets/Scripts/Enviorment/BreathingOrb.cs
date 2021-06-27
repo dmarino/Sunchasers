@@ -5,8 +5,8 @@ using UnityEngine;
 public class BreathingOrb : MonoBehaviour
 {
     [SerializeField] private int _Seconds=4;
-    [SerializeField] private int _MaxScale=2;
     [SerializeField] private int _MinScale=0;
+    [SerializeField] private int AntiSpeed=2;
     private float _CurrentTimeInPhase;
     private float _CurrentScale;
     private bool _IsBreathing;
@@ -36,7 +36,7 @@ public class BreathingOrb : MonoBehaviour
         if(_IsBreathing==true)
         {
             Debug.Log(_CurrentState);
-            CheckState(Time.deltaTime);
+            CheckState(Time.deltaTime/AntiSpeed);
             transform.localScale = new Vector3(_CurrentScale, _CurrentScale, _CurrentScale);
 
             _CurrentTimeInPhase += Time.deltaTime;

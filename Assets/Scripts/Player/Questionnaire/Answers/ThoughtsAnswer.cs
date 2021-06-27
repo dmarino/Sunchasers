@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThoughtsAnswer : MonoBehaviour
+public class ThoughtsAnswer : Answer
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public QuestionnaireInfo.THOUGHTS _Thoughts;
+
+    private void Awake()
     {
-        
+        _Label.text = _Thoughts.ToString();
+         _Label.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void WasSelected()
     {
-        
+        base.WasSelected();
+        QuestionnaireController.Instance.SetThoughts(_Thoughts);
     }
 }
