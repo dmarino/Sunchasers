@@ -36,8 +36,9 @@ public class BreathingListener : MonoBehaviour
 
     private float LastIntensity =0f;
     private float MaxIntensity =0f;
-
     private bool _HasGameStarted;
+
+    private int _AmountOfBreatOuts;
 
     private void AfterAwake()
     {
