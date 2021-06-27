@@ -68,7 +68,7 @@ public class QuestionnaireController : MonoBehaviour
     {
         if(_QuestionnaireHasStarted==false)
         {
-            ShowScreen<BreathingQuestion>();
+            ShowScreen<SensationQuestion>();
             _QuestionnaireHasStarted=true;
         }
         
@@ -82,16 +82,18 @@ public class QuestionnaireController : MonoBehaviour
     public void SetSensation(QuestionnaireInfo.SENSATION pSensation)
     {
         _CurrentInfo.Sensation = pSensation;
-        ShowScreen<EmotionQuestion>();
+        ShowScreen<ThoughtsQuestion>();
     }
 
     public void SetEmotion(QuestionnaireInfo.EMOTIONS pEmotions)
     {
         _CurrentInfo.Emotions= pEmotions;
+        ShowScreen<BreathingQuestion>();
     }
 
     public void SetThoughts(QuestionnaireInfo.THOUGHTS pThoughts)
     {
         _CurrentInfo.Thoughts = pThoughts;
+        ShowScreen<EmotionQuestion>();
     }
 }
