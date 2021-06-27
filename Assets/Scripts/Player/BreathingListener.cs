@@ -44,6 +44,19 @@ public class BreathingListener : MonoBehaviour
         _HasGameStarted=false;
     }
 
+
+    private void Update()
+    {
+        if( _HasGameStarted)
+        {
+            Debug.Log(Intensity);
+
+            Vector3 pos = ControllersListener.Instance.LeftPos;
+            Intensity= Vector3.Distance(OriginalPosition, pos);
+            LastPosition = pos;
+        }
+    }
+
     public void OnBreathingDetected(InputAction.CallbackContext context)
     {
         if( _HasGameStarted && context.started)
@@ -60,10 +73,9 @@ public class BreathingListener : MonoBehaviour
 
         }
        
-        
     }
 
-    public void Testing(InputAction.CallbackContext context)
+    public void Testing()
     {
         if(_HasGameStarted==false)
         {

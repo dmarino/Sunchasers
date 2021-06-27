@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
+                    "name": "MainButton",
                     "type": "Button",
                     "id": "3ab5b5bc-1eee-4674-a9ec-1c89a7d58d78",
                     "expectedControlType": "Button",
@@ -30,9 +30,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Breath",
+                    "name": "LeftHand",
                     "type": "Value",
                     "id": "3ae51a59-472f-40c7-a7e2-c32ea00e1237",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightHand",
+                    "type": "Value",
+                    "id": "66b1724d-3e3d-47a1-b32c-7c53fedda3c3",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -211,7 +219,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "MainButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -222,7 +230,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "MainButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -233,7 +241,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Fire",
+                    "action": "MainButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -244,7 +252,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Fire",
+                    "action": "MainButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,18 +263,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Fire",
+                    "action": "MainButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "05211e4e-8673-41c9-b401-6a1b69463c0a",
+                    "path": "<XRController>{LeftHand}/devicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "LeftHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a959798-a373-4e6c-a278-622d1b5c52d3",
                     "path": "<XRController>{RightHand}/devicePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Breath",
+                    "action": "RightHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
