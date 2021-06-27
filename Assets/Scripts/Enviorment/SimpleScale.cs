@@ -8,7 +8,7 @@ public class SimpleScale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float scale = 1+  BreathingListener.Instance.ReMap(0,1); 
+        float scale = BreathingListener.Instance.ReMap(0,2); 
         transform.localScale = new Vector3(scale, scale, scale);
     }
 }
